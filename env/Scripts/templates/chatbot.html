@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+  </head>
+  <body>
+    <div class="container2">
+  <h1>Chatbot</h1>
+<h3> Palabras para interactuar : "hola"  "ola" "holas" "bien y vos?" <br>"bien"  "muy bien" "que haces?"  "que haces"  "que cuentas?"  "contame algo"<br>
+  "rojo"  "el rojo"  "es el rojo"  "el color rojo" "verde" "el verde" <br> "es el verde"  "el color verde" "azul" "adios" "chau"  "me voy" "hasta luego" </h3>
+    <form method="POST" action="/respuesta">
+      <input type="text" name="mensaje" placeholder="Escribe tu mensaje" />
+      <button type="submit">Enviar</button>
+    </form>
+<div class="conversacion">
+    <h2 >Conversación:</h2>
+    <ul>
+      {% for emisor, mensaje in conversacion %}
+      <li><strong>{{ emisor }}:</strong> {{ mensaje }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+    </div>
+  
+  </body>
+</html>

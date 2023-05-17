@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bienvenidos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div>
+  <div class="container ">
+
+ <h1 >Bienvenidos</h1>
+  <h2>Ingresa tu nombre de usuario</h2>
+   
+  <input type="text"  name= "name" id="name" placeholder="Ingresa tu nombre de usuario">
+  <div>  <button onclick="enviarJSON()">Guardar Nombre</button>
+  <button onclick="redirectToRespuesta()">Ir al CHATBOT</button>
+</div>  
+</div>
+ 
+  <script>
+    function redirectToRespuesta() {
+      window.location.href = "/respuesta";
+    }
+  </script>
+  <script>
+    function enviarJSON() {
+        var name = document.getElementById("name").value;
+        var data = {
+            name: name
+        };
+
+        var jsonData = JSON.stringify(data);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/guardar-nombre", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("JSON enviado correctamente");
+            }
+        };
+        xhr.send(jsonData);
+    }
+</script>
+    </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+  
+</body>
+</html>
